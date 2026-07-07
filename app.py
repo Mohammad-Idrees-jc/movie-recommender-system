@@ -2,7 +2,7 @@
 Content-Based Movie Recommender System
 ----------------------------------------
 Streamlit front-end that serves recommendations produced by the
-NLP/cosine-similarity pipeline in notebooks/movie_recommender_eda.ipynb.
+NLP/cosine-similarity pipeline in notebooks/movie_recommendation.ipynb.
 
 Run locally:
     streamlit run app.py
@@ -30,12 +30,7 @@ PLACEHOLDER_POSTER = "https://placehold.co/500x750?text=No+Poster"
 
 
 def get_api_key() -> str:
-    """Fetch the TMDB API key from Streamlit secrets first, then env vars.
-
-    Never hardcode the key in source. For local dev, put it in
-    .streamlit/secrets.toml. For Streamlit Community Cloud, set it under
-    App settings -> Secrets.
-    """
+    
     if "TMDB_API_KEY" in st.secrets:
         return st.secrets["TMDB_API_KEY"]
     key = os.environ.get("TMDB_API_KEY")
@@ -99,7 +94,7 @@ def main():
     st.caption(
         "Content-based recommendations using TF-style tags (overview, genre, "
         "cast, crew, keywords) and cosine similarity. "
-        "[Notebook & write-up](https://github.com/YOUR_USERNAME/movie-recommender-system)"
+        "[https://www.kaggle.com/code/mohammadjc/movie-recommendation](https://github.com/Mohammad-Idrees-jc/movie-recommender-system)"
     )
 
     movies_df, similarity_matrix = load_data()
